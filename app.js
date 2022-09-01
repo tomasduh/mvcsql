@@ -33,10 +33,24 @@ app.post('/create', (req,res)=>{
         else{
             res.send(result);
         }
-
     }
     )
     // res.send('enviado');
+})
+
+app.post('/update', (res,req)=>{
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const precio = req.body.precio;
+    conexion.query("UPDATE `productos` SET `nombre`='"+nombre+"',`precio`='"+precio+"' WHERE `id`='"+id+"'",(error, result)=>{
+        if(error){
+            throw error;
+        }
+        else{
+            res.send(result);
+        }
+    }
+    )
 })
 app.listen(3000);
 

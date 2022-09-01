@@ -21,7 +21,6 @@ app.get('/conexion', (req, res)=>{
     )
 })
 
-
 app.post('/create', (req,res)=>{
     const nombre = req.body.nombre;
     const precio = req.body.precio;
@@ -42,7 +41,8 @@ app.post('/update', (res,req)=>{
     const id = req.body.id;
     const nombre = req.body.nombre;
     const precio = req.body.precio;
-    conexion.query("UPDATE `productos` SET `nombre`='"+nombre+"',`precio`='"+precio+"' WHERE `id`='"+id+"'",(error, result)=>{
+    const consulta = "UPDATE `productos` SET `nombre`='"+nombre+"',`precio`='"+precio+"' WHERE `id`='"+id+"'";
+    conexion.query(consulta,(error, result)=>{
         if(error){
             throw error;
         }

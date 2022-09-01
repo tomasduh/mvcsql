@@ -38,6 +38,21 @@ app.post('/create', (req,res)=>{
     )
     // res.send('enviado');
 })
+
+app.delete('/deleted',(req,res) =>{
+    const id = req.body.id;
+    const consulta = "DELETE from productos WHERE id = '"+id+"'";
+    conexion.query(consulta,(error, result)=>{
+        if(error){
+            throw error;
+        }
+        else{
+            res.send(result);
+        }
+
+    }
+    )
+})
 app.listen(3000);
 
 console.log('server colocado');

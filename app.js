@@ -25,8 +25,8 @@ app.get('/conexion', (req, res)=>{
 app.post('/create', (req,res)=>{
     const nombre = req.body.nombre;
     const precio = req.body.precio;
-
-    conexion.query("INSERT INTO `productos`( `nombre`, `precio`) VALUES ("+nombre+","+precio+")",(error, result)=>{
+    const consulta = "INSERT INTO productos( nombre,precio) VALUES('"+nombre+"', '"+precio+"')";
+    conexion.query(consulta,(error, result)=>{
         if(error){
             throw error;
         }
